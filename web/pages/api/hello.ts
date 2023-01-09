@@ -5,7 +5,15 @@ type Data = {
   name: string
 }
 
-export default function handler(
+
+export async function getAPI(req: NextApiRequest, res: NextApiResponse){
+  const response = await fetch('https://my-project.sanity.io/v1/data/query/production');
+  const data = await response.json();
+  console.log(data)
+  res.json(data);
+};
+
+export  function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
