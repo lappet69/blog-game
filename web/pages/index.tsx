@@ -16,26 +16,6 @@ interface Props {
 }
 
 export default function Home({ posts }: Props) {
-  // const [data, setData] = useState([
-  //   {}
-  // ]);
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const response = await fetch('http://localhost:3333/v3/data/query/production');
-  //     console.log(response)
-  //     // const data = await response.json();
-  //     // setData(data);
-  //   }
-
-  //   // fetchData();
-  // }, []);
-  // console.log(data)
-
-  // if (!data) {
-  //   return <div>Loading...</div>;
-  // }
-
   return (
     <>
       <BlogList post={posts} />
