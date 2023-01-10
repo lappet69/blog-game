@@ -7,17 +7,12 @@ import client from "../client";
 import { NextApiRequest, NextApiResponse } from "next";
 import { useEffect, useState } from "react";
 import { getAPI } from "./api/hello";
+import { RootObject } from "../interface";
 
 const inter = Inter({ subsets: ["latin"] });
 
 interface Props {
-  posts: {
-    title?: string | null;
-    author?: string | null;
-    category?: string;
-    published_at?: string | null;
-    body?: string | null;
-  }[];
+  posts: RootObject[];
 }
 
 export default function Home({ posts }: Props) {
@@ -55,8 +50,6 @@ export async function getStaticProps() {
   `,
     {}
   );
-
-  console.log("TEST", posts);
   return {
     props: {
       posts,
