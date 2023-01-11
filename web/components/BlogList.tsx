@@ -1,26 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { RootObject } from "../interface";
 import Image from 'next/image'
-import NotFound from '../assets/notfound.png';
-import client from "../client";
-import imageUrlBuilder from '@sanity/image-url'
-
-const builder = imageUrlBuilder(client)
-
-function urlFor(source:any) {
-  return builder.image(source)
-}
+import { urlFor,defaultImg } from "../utils/global";
 
 interface Props {
   post: RootObject[];
 }
 
-
 const BlogList = ({ post }: Props) => {
-  
-  console.log("TEST", post);
-
-  
 
   return (
     <section className="body-font py-20">
@@ -29,14 +16,14 @@ const BlogList = ({ post }: Props) => {
           {post.map((item: RootObject) => {
             return (
               <>
-                <a key={item._id} className="p-4 block md:w-1/3" href="#">
+                <a key={item._id} className="p-4 block md:w-1/3" href={`/post/${item?.slug?.current}`}>
                   <div className="h-full border-2 border-gray-200 border-opacity-60 overflow-hidden rounded-global dark:border-slate-700">
                     <Image
                       className="w-full object-cover object-center transition-all ease-in duration-200 hover:scale-105 bg-gray-50 md:h-36 lg:h-48"
                       alt="No alt"
                         width={500}
                         height={500}
-                      src={urlFor(item?.mainImage.asset._ref).url() || NotFound}
+                      src={urlFor(item?.mainImage.asset._ref).url() || defaultImg()}
                     />
                     <div className="p-6">
                       <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
