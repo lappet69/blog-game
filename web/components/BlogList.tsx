@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { RootObject } from "../interface";
 import Image from 'next/image'
-import { urlFor,defaultImg } from "../utils/global";
+import { urlFor, defaultImg, cutStr } from "../utils/global";
 
 interface Props {
   post: RootObject[];
@@ -21,8 +21,8 @@ const BlogList = ({ post }: Props) => {
                     <Image
                       className="w-full object-cover object-center transition-all ease-in duration-200 hover:scale-105 bg-gray-50 md:h-36 lg:h-48"
                       alt="No alt"
-                        width={500}
-                        height={500}
+                      width={500}
+                      height={500}
                       src={urlFor(item?.mainImage.asset._ref).url() || defaultImg()}
                     />
                     <div className="p-6">
@@ -32,10 +32,10 @@ const BlogList = ({ post }: Props) => {
                       <h1 className="title-font text-lg font-medium text-gray-900 mb-3 dark:text-gray-100">
                         {item.title}
                       </h1>
-                      <p className="leading-relaxed mb-3">
+                      <p className="leading-relaxed mb-3 capitalize">
                         {item.body.map((paragraph) =>
-                          paragraph.children.map((item) => item.text)
-                        )}
+                          paragraph.children.map((item) => cutStr(item.text, 110))
+                        )} ...
                       </p>
                       <div className="flex items-center flex-wrap text-primary-500">
                         <span className="w-6 h-6 ml-2">
