@@ -10,7 +10,7 @@ interface Props {
 const BlogList = ({ post }: Props) => {
 
   return (
-    <section className="body-font py-20">
+    <section className="grow body-font py-20">
       <div className="px-5 mx-auto max-w-7xl">
         <div className="flex flex-wrap -m-4">
           {post.map((item: RootObject) => {

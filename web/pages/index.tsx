@@ -27,8 +27,10 @@ export default function Home({ posts }: Props) {
         </div>
       </section>
 
-      <BlogList post={posts} />
-      <FeatureGame posts={posts} />
+      <div className="flex flex-wrap md:flex-nowrap px-10">
+        <BlogList post={posts} />
+        <FeatureGame posts={posts} />
+      </div>
 
     </div>
   );
