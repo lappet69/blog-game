@@ -6,3 +6,4 @@ export default sanityClient({
   apiVersion: "2023-01-09",
 });
 
+

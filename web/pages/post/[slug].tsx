@@ -11,7 +11,6 @@ interface Props {
 
 
 const Post = ({ post }: Props) => {
-  console.log(post)
   return (
     <section className="body-font py-20">
       <div className="px-5 mx-auto max-w-7xl">
