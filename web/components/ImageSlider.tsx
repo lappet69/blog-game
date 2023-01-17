@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { defaultImg, urlFor } from "../utils/global";
 import { IoChevronForwardCircle, IoChevronBackCircle } from "react-icons/io5";
@@ -8,8 +8,7 @@ interface IProps {
 }
 
 const ImageSlider = ({ images }: IProps) => {
-  const [currentIndex, setCurrentIndex] = useState(1);
-  const size = 500;
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrevClick = () => {
     if (currentIndex === 0) {
@@ -26,6 +25,13 @@ const ImageSlider = ({ images }: IProps) => {
       setCurrentIndex(currentIndex + 1);
     }
   };
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentIndex((currentIndex) => (currentIndex + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(intervalId);
+  }, [images]);
 
   return (
     <div className="relative flex justify-center items-center">
