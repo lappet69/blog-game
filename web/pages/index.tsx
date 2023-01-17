@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { getAPI } from "./api/hello";
 import { RootObject } from "../interface";
 import FeatureGame from "../components/FeatureGame";
+import ImageSlider from "../components/ImageSlider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,6 +18,10 @@ interface Props {
 }
 
 export default function Home({ posts }: Props) {
+  let images = posts.map((item) => {
+    return item.mainImage.asset._ref;
+  });
+
   return (
     <div>
       <section className="body-font py-20 bg-red-500">
@@ -26,12 +31,11 @@ export default function Home({ posts }: Props) {
           </div>
         </div>
       </section>
-
+      <ImageSlider images={images} />
       <div className="flex flex-wrap md:flex-nowrap px-10">
         <BlogList post={posts} />
         <FeatureGame posts={posts} />
       </div>
-
     </div>
   );
 }
