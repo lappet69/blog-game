@@ -24,7 +24,7 @@ export default function Home({ posts }: Props) {
 
   return (
     <div>
-      <section className="body-font py-20 bg-red-500">
+      <section className="body-font py-20 ">
         <div className="px-5 mx-auto max-w-7xl">
           <div className="flex flex-wrap -m-4">
             <h2>Game guides, tips and answers for Android and iOS app games</h2>

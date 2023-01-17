@@ -9,3 +9,8 @@ export const urlFor = (source: any) => builder.image(source)
 export const defaultImg = () => NotFound
 
 export const cutStr = ((str: string, length: number) => str.slice(0, length))
+
+export async function getCategories() {
+    const categories = await client.fetch(`*[_type == "category"]`)
+    return await categories
+}

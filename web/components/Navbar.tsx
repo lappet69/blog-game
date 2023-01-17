@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Category } from "../interface";
+import { getCategories } from "../utils/global";
+
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [categories, setCategories] = useState([])
+  useEffect(() => {
+    (async () => {
+      const res = await getCategories()
+      setCategories(res)
+    })()
+  }, [])
   return (
     <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
       <div className="relative flex items-center justify-between">
@@ -26,13 +37,18 @@ const Navbar = () => {
               Features
             </a>
           </li>
-          <li className="">
+          <li className="relative">
             <a
               className="font-medium tracking-wide transition-colors duration-200 hover:text-primary-700"
-              href="#"
+              href="/category"
             >
-              Pricing
+              Category
             </a>
+            <div className="w-32 transparent menu-category text-transparent absolute h-32 z-30 hover:flex flex-col hover:block -mt-10 hover:mt-0 hover:text-red-500">
+              {categories && categories.map((el: any) => (
+                <a key={el?._id} href={`/category/${el?._id}`} className="z-40 relative hover:bg-cyan-500 cursor-pointer px-5 capitalize">{el?.title}</a>
+              ))}
+            </div>
           </li>
           <li className="">
             <a
@@ -46,7 +62,7 @@ const Navbar = () => {
         <ul className="items-center hidden space-x-8 lg:flex">
           <li className="">
             <a
-              className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none bg-primary rounded-global"
+              className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-red-500 transition duration-200 shadow-md hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none bg-primary rounded-global"
               href="#"
             >
               {" "}
@@ -82,4 +98,7 @@ const Navbar = () => {
   );
 };
 
+
 export default Navbar;
+
+
