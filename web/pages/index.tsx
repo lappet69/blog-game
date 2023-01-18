@@ -19,7 +19,7 @@ interface Props {
 
 export default function Home({ posts }: Props) {
   let images = posts.map((item) => {
-    return item.mainImage.asset._ref;
+    return {img:item.mainImage.asset._ref,title:item.title};
   });
 
   return (

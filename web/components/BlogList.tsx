@@ -18,7 +18,7 @@ const BlogList = ({ post }: Props) => {
               <>
                 <a
                   key={item._id}
-                  className="p-4 block md:w-1/3"
+                  className="p-4 block md:w-1/3 shadow-xl"
                   href={`/post/${item?.slug?.current}`}
                 >
                   <div className="h-full border-2 border-gray-200 border-opacity-60 overflow-hidden rounded-global dark:border-slate-700">
@@ -35,7 +35,7 @@ const BlogList = ({ post }: Props) => {
                       <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                         CATEGORY
                       </h2>
-                      <h1 className="title-font text-lg font-medium text-gray-900 mb-3 dark:text-gray-100">
+                      <h1 className="title-font text-lg font-medium text-gray-900 mb-3 dark:text-gray-100 capitalize">
                         {item.title}
                       </h1>
                       <p className="leading-relaxed mb-3 capitalize">

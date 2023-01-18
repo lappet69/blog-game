@@ -44,7 +44,7 @@ const Navbar = () => {
             >
               Category
             </a>
-            <div className="w-32 transparent menu-category text-transparent absolute h-32 z-30 hover:flex flex-col hover:block -mt-10 hover:mt-0 hover:text-red-500">
+            <div className="w-32 transparent menu-category text-transparent absolute h-32 z-30 hover:flex flex-col -mt-10 hover:mt-0 hover:text-red-500">
               {categories && categories.map((el: any) => (
                 <a key={el?._id} href={`/category/${el?._id}`} className="z-40 relative hover:bg-cyan-500 cursor-pointer px-5 capitalize">{el?.title}</a>
               ))}
