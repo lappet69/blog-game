@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { RootObject } from "../interface";
-import Image from 'next/image'
+import Image from "next/image";
 import { urlFor, defaultImg, cutStr } from "../utils/global";
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 }
 
 const BlogList = ({ post }: Props) => {
-
+  console.log(post[1].body);
   return (
     <section className="grow body-font py-20">
       <div className="px-5 mx-auto max-w-7xl">
@@ -16,14 +16,20 @@ const BlogList = ({ post }: Props) => {
           {post.map((item: RootObject) => {
             return (
               <>
-                <a key={item._id} className="p-4 block md:w-1/3" href={`/post/${item?.slug?.current}`}>
+                <a
+                  key={item._id}
+                  className="p-4 block md:w-1/3"
+                  href={`/post/${item?.slug?.current}`}
+                >
                   <div className="h-full border-2 border-gray-200 border-opacity-60 overflow-hidden rounded-global dark:border-slate-700">
                     <Image
                       className="w-full object-cover object-center transition-all ease-in duration-200 hover:scale-105 bg-gray-50 md:h-36 lg:h-48"
                       alt="No alt"
                       width={500}
                       height={500}
-                      src={urlFor(item?.mainImage.asset._ref).url() || defaultImg()}
+                      src={
+                        urlFor(item?.mainImage.asset._ref).url() || defaultImg()
+                      }
                     />
                     <div className="p-6">
                       <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
@@ -33,9 +39,8 @@ const BlogList = ({ post }: Props) => {
                         {item.title}
                       </h1>
                       <p className="leading-relaxed mb-3 capitalize">
-                        {item.body.map((paragraph) =>
-                          paragraph.children.map((item) => cutStr(item.text, 110))
-                        )} ...
+                        {cutStr(item.body[0].children[0].text, 100)}
+                        ...
                       </p>
                       <div className="flex items-center flex-wrap text-primary-500">
                         <span className="w-6 h-6 ml-2">
@@ -99,4 +104,3 @@ const BlogList = ({ post }: Props) => {
 };
 
 export default BlogList;
-
