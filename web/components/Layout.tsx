@@ -12,7 +12,7 @@ const Layout = ({ children }: Props) => {
       <div className="w-full shadow-2xl ">
       <Navbar />
       </div>
-      <>{children}</>
+      <div className="px-20">{children}</div>
       <Footer />
     </div>
   );

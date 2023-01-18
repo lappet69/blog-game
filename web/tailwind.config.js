@@ -6,7 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      
+      colors:{
+        cardOverlay: "rgba(2,2,2, 0.3)",
+      },
       fontFamily: {
         heading: [
           "DM Sans",
