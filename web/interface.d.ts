@@ -16,6 +16,7 @@ export interface Body {
   children: Child[];
   markDefs: any[];
   style: string;
+  asset: Asset[];
 }
 
 export interface Asset {

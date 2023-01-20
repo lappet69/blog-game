@@ -19,7 +19,7 @@ const ListFeatureGame = ({ post }: Props) => {
                             <h2 className='font-bold text-red-500 capitalize'>{item?.title}</h2>
                             <p className="leading-relaxed mb-3 capitalize">
                                 {item.body.map((paragraph) =>
-                                    paragraph.children.map((item) => cutStr(item.text, 50))
+                                    paragraph._type == "block" && paragraph.children.map((item) => cutStr(item.text, 50))
                                 )} ...
                             </p>
                         </div>

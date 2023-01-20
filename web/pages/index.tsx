@@ -23,6 +23,10 @@ export default function Home({ posts }: Props) {
   });
 
   return (
+    <>
+    <Head>
+      <title>BLOG GEMING</title>
+    </Head>
     <div>
       <section className="body-font py-20 ">
         <div className="px-5 mx-auto max-w-7xl">
@@ -37,6 +41,7 @@ export default function Home({ posts }: Props) {
         <FeatureGame posts={posts} />
       </div>
     </div>
+    </>
   );
 }
 

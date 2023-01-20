@@ -26,7 +26,7 @@ const BlogList = ({ post }: Props) => {
                       src={urlFor(item?.mainImage.asset._ref).url() || defaultImg()}
                     />
                     <div className="p-6">
-                      <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                      <h2 className="tracking-widest text-xs flex items-center title-font font-medium text-gray-400 mb-1">
                         CATEGORY
                       </h2>
                       <h1 className="title-font text-lg font-medium text-gray-900 mb-3 dark:text-gray-100 capitalize">
@@ -34,7 +34,7 @@ const BlogList = ({ post }: Props) => {
                       </h1>
                       <p className="leading-relaxed mb-3 capitalize">
                         {item.body.map((paragraph) =>
-                          paragraph.children.map((item) => cutStr(item.text, 110))
+                          paragraph._type == "block" && paragraph.children.map((item) => cutStr(item.text, 110))
                         )} ...
                       </p>
                       <div className="flex items-center flex-wrap text-primary-500">
